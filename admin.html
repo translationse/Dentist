@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Dental Website Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-box">
+            <div class="login-logo">
+                <i class="fas fa-tooth"></i>
+                <h2>Admin Panel</h2>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" value="admin" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" value="admin123" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+            <p class="login-hint">Default: admin / admin123</p>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="admin-dashboard" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-tooth"></i>
+                <span>Admin Panel</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" onclick="showSection('dashboard')">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#general" class="nav-item" onclick="showSection('general')">
+                    <i class="fas fa-cog"></i>
+                    <span>General Settings</span>
+                </a>
+                <a href="#appearance" class="nav-item" onclick="showSection('appearance')">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Appearance</span>
+                </a>
+                <a href="#services" class="nav-item" onclick="showSection('services')">
+                    <i class="fas fa-list"></i>
+                    <span>Services</span>
+                </a>
+                <a href="#reviews" class="nav-item" onclick="showSection('reviews')">
+                    <i class="fas fa-star"></i>
+                    <span>Reviews</span>
+                </a>
+                <a href="#social" class="nav-item" onclick="showSection('social')">
+                    <i class="fas fa-share-alt"></i>
+                    <span>Social Links</span>
+                </a>
+                <a href="#appointments" class="nav-item" onclick="showSection('appointments')">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Appointments</span>
+                    <span class="badge" id="appointment-count">0</span>
+                </a>
+                <a href="#inquiries" class="nav-item" onclick="showSection('inquiries')">
+                    <i class="fas fa-envelope"></i>
+                    <span>Inquiries</span>
+                    <span class="badge" id="inquiry-count">0</span>
+                </a>
+                <a href="#media" class="nav-item" onclick="showSection('media')">
+                    <i class="fas fa-images"></i>
+                    <span>Media Manager</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button onclick="logout()" class="btn btn-outline btn-full">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <h2 id="section-title">Dashboard</h2>
+                <div class="top-actions">
+                    <button onclick="previewWebsite()" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
+                    <button onclick="saveAllChanges()" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="section-dashboard" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-appointments">0</h3>
+                            <p>Total Appointments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-inquiries">0</h3>
+                            <p>Total Inquiries</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-services">0</h3>
+                            <p>Active Services</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-reviews">0</h3>
+                            <p>Patient Reviews</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h3>Recent Appointments</h3>
+                        <div id="recent-appointments" class="recent-list">
+                            <p class="empty">No recent appointments</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Quick Actions</h3>
+                        <div class="quick-actions">
+                            <button onclick="showSection('services')" class="action-btn">
+                                <i class="fas fa-plus"></i>
+                                <span>Add Service</span>
+                            </button>
+                            <button onclick="showSection('reviews')" class="action-btn">
+                                <i class="fas fa-plus"></i>
+                                <span>Add Review</span>
+                            </button>
+                            <button onclick="showSection('general')" class="action-btn">
+                                <i class="fas fa-edit"></i>
+                                <span>Edit Content</span>
+                            </button>
+                            <button onclick="showSection('media')" class="action-btn">
+                                <i class="fas fa-upload"></i>
+                                <span>Upload Images</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- General Settings -->
+            <section id="section-general" class="content-section">
+                <div class="card">
+                    <h3>Clinic Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Clinic Name</label>
+                            <input type="text" id="set-clinic-name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Tagline</label>
+                            <input type="text" id="set-tagline" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Doctor Name</label>
+                            <input type="text" id="set-doctor-name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Experience (Years)</label>
+                            <input type="number" id="set-experience" class="form-control">
+                        </div>
+                        <div class="form-group full">
+                            <label>Phone Number</label>
+                            <input type="text" id="set-phone" class="form-control">
+                        </div>
+                        <div class="form-group full">
+                            <label>Email Address</label>
+                            <input type="email" id="set-email" class="form-control">
+                        </div>
+                        <div class="form-group full">
+                            <label>Full Address</label>
+                            <textarea id="set-address" rows="3" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group full">
+                            <label>About Description</label>
+                            <textarea id="set-about" rows="4" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group full">
+                            <label>Hero Description</label>
+                            <textarea id="set-hero-desc" rows="3" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appearance -->
+            <section id="section-appearance" class="content-section">
+                <div class="card">
+                    <h3>Colors & Branding</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Primary Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" id="set-primary-color" class="color-picker">
+                                <span id="primary-hex">#0891B2</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Secondary Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" id="set-secondary-color" class="color-picker">
+                                <span id="secondary-hex">#0D9488</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Accent Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" id="set-accent-color" class="color-picker">
+                                <span id="accent-hex">#EA580C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Logo & Icons</h3>
+                    <div class="upload-grid">
+                        <div class="upload-box" onclick="triggerUpload('logo-upload')">
+                            <input type="file" id="logo-upload" accept="image/*" hidden onchange="handleImageUpload(this, 'logo')">
+                            <img id="preview-logo" src="" alt="Logo Preview" style="display: none;">
+                            <div class="upload-placeholder" id="logo-placeholder">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Upload Logo</span>
+                                <small>Recommended: 200x200px</small>
+                            </div>
+                        </div>
+                        <div class="upload-box" onclick="triggerUpload('favicon-upload')">
+                            <input type="file" id="favicon-upload" accept="image/*" hidden onchange="handleImageUpload(this, 'favicon')">
+                            <img id="preview-favicon" src="" alt="Favicon Preview" style="display: none;">
+                            <div class="upload-placeholder" id="favicon-placeholder">
+                                <i class="fas fa-star"></i>
+                                <span>Upload Favicon</span>
+                                <small>Recommended: 32x32px</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Manager -->
+            <section id="section-services" class="content-section">
+                <div class="section-header-bar">
+                    <h3>Manage Services</h3>
+                    <button onclick="openServiceModal()" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add New Service
+                    </button>
+                </div>
+                
+                <div id="services-list" class="items-list">
+                    <!-- Services loaded here -->
+                </div>
+            </section>
+
+            <!-- Reviews Manager -->
+            <section id="section-reviews" class="content-section">
+                <div class="section-header-bar">
+                    <h3>Manage Reviews</h3>
+                    <button onclick="openReviewModal()" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add New Review
+                    </button>
+                </div>
+                
+                <div id="reviews-list" class="items-list">
+                    <!-- Reviews loaded here -->
+                </div>
+            </section>
+
+            <!-- Social Links -->
+            <section id="section-social" class="content-section">
+                <div class="card">
+                    <h3>Social Media Profiles</h3>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label><i class="fab fa-whatsapp text-green-500"></i> WhatsApp Number</label>
+                            <input type="text" id="social-whatsapp" class="form-control" placeholder="919403515585">
+                        </div>
+                        <div class="form-group full">
+                            <label><i class="fab fa-facebook text-blue-600"></i> Facebook URL</label>
+                            <input type="url" id="social-facebook" class="form-control" placeholder="https://facebook.com/yourpage">
+                        </div>
+                        <div class="form-group full">
+                            <label><i class="fab fa-instagram text-pink-600"></i> Instagram URL</label>
+                            <input type="url" id="social-instagram" class="form-control" placeholder="https://instagram.com/yourprofile">
+                        </div>
+                        <div class="form-group full">
+                            <label><i class="fab fa-linkedin text-blue-700"></i> LinkedIn URL</label>
+                            <input type="url" id="social-linkedin" class="form-control" placeholder="https://linkedin.com/in/yourprofile">
+                        </div>
+                        <div class="form-group full">
+                            <label><i class="fab fa-youtube text-red-600"></i> YouTube URL</label>
+                            <input type="url" id="social-youtube" class="form-control" placeholder="https://youtube.com/channel/...">
+                        </div>
+                        <div class="form-group full">
+                            <label><i class="fas fa-star text-yellow-500"></i> Justdial URL</label>
+                            <input type="url" id="social-justdial" class="form-control" placeholder="https://jsdl.in/...">
+                        </div>
+                        <div class="form-group full">
+                            <label><i class="fab fa-google text-red-500"></i> Google Business URL</label>
+                            <input type="url" id="social-google" class="form-control" placeholder="https://g.page/...">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appointments -->
+            <section id="section-appointments" class="content-section">
+                <div class="card">
+                    <div class="table-header">
+                        <h3>Appointment Requests</h3>
+                        <button onclick="exportAppointments()" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-download"></i> Export CSV
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table" id="appointments-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Service</th>
+                                    <th>Preferred Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="appointments-tbody">
+                                <!-- Loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inquiries -->
+            <section id="section-inquiries" class="content-section">
+                <div class="card">
+                    <div class="table-header">
+                        <h3>Quick Inquiries</h3>
+                        <button onclick="exportInquiries()" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-download"></i> Export CSV
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table" id="inquiries-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Service</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inquiries-tbody">
+                                <!-- Loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Media Manager -->
+            <section id="section-media" class="content-section">
+                <div class="card">
+                    <h3>Upload Images</h3>
+                    <div class="upload-section">
+                        <div class="upload-area" onclick="triggerUpload('media-upload')" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+                            <input type="file" id="media-upload" accept="image/*" multiple hidden onchange="handleMultipleUpload(this)">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop images here or click to browse</p>
+                            <span>Supported: JPG, PNG, WebP (Max 5MB each)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Image Gallery</h3>
+                    <div id="image-gallery" class="image-gallery">
+                        <!-- Images loaded here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Service Modal -->
+    <div id="service-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="service-modal-title">Add Service</h3>
+                <button onclick="closeModal('service-modal')" class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="service-form" onsubmit="saveService(event)">
+                <input type="hidden" id="service-id">
+                <div class="form-group">
+                    <label>Service Name *</label>
+                    <input type="text" id="service-name" required class="form-control">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Icon</label>
+                        <select id="service-icon" class="form-control">
+                            <option value="fa-tooth">🦷 Tooth</option>
+                            <option value="fa-smile">😊 Smile</option>
+                            <option value="fa-syringe">💉 Syringe</option>
+                            <option value="fa-heart">❤️ Heart</option>
+                            <option value="fa-star">⭐ Star</option>
+                            <option value="fa-magic">✨ Magic</option>
+                            <option value="fa-shield-alt">🛡️ Shield</option>
+                            <option value="fa-cog">⚙️ Cog</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Color</label>
+                        <input type="color" id="service-color" class="color-picker-full" value="#0891B2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Description *</label>
+                    <textarea id="service-desc" rows="3" required class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Image (Optional)</label>
+                    <input type="file" id="service-image" accept="image/*" class="form-control">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal('service-modal')" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Service</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="review-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="review-modal-title">Add Review</h3>
+                <button onclick="closeModal('review-modal')" class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="review-form" onsubmit="saveReview(event)">
+                <input type="hidden" id="review-id">
+                <div class="form-group">
+                    <label>Patient Name *</label>
+                    <input type="text" id="review-name" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="star-rating-input">
+                        <input type="radio" name="rating" value="5" id="star5" checked>
+                        <label for="star5">★</label>
+                        <input type="radio" name="rating" value="4" id="star4">
+                        <label for="star4">★</label>
+                        <input type="radio" name="rating" value="3" id="star3">
+                        <label for="star3">★</label>
+                        <input type="radio" name="rating" value="2" id="star2">
+                        <label for="star2">★</label>
+                        <input type="radio" name="rating" value="1" id="star1">
+                        <label for="star1">★</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Review Text *</label>
+                    <textarea id="review-text" rows="4" required class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Patient Photo (Optional)</label>
+                    <input type="file" id="review-photo" accept="image/*" class="form-control">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal('review-modal')" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
