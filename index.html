@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="site-title">Dr. Snehal Shah Dental Clinic | Goregaon West, Mumbai</title>
+    <meta name="description" content="Best dental clinic in Goregaon West, Mumbai. 16+ years experience. Painless treatments, implants, cosmetic dentistry.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="tooth-loader">🦷</div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img id="logo-img" src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="logo-fallback" style="display: none;">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1 id="clinic-name">Dr. Snehal Shah</h1>
+                        <span id="clinic-tagline">Dental Clinic</span>
+                    </div>
+                </a>
+
+                <nav class="main-nav" id="main-nav">
+                    <ul>
+                        <li><a href="#home" class="active">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <a id="header-whatsapp" href="https://wa.me/919403515585" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Book Now</span>
+                    </a>
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="close-menu" id="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-contact">
+            <a href="tel:+919403515585" class="btn-call">
+                <i class="fas fa-phone"></i> Call Now
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="badge">
+                        <i class="fas fa-award"></i>
+                        <span id="experience-badge">16+ Years of Excellence</span>
+                    </div>
+                    
+                    <h2 class="hero-title">
+                        Your Journey to a <br>
+                        <span class="highlight">Confident Smile</span> ✨
+                    </h2>
+                    
+                    <p class="hero-desc" id="hero-description">
+                        At Dr. Snehal Shah's Dental Clinic, we combine expertise with a caring approach 
+                        to ensure your dental journey is as comfortable and painless as possible.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a id="hero-whatsapp" href="https://wa.me/919403515585" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            Book Appointment
+                        </a>
+                        <a id="hero-phone" href="tel:+919403515585" class="btn btn-secondary">
+                            <i class="fas fa-phone-alt"></i>
+                            Call: 94035 15585
+                        </a>
+                    </div>
+
+                    <div class="hero-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Painless Treatments</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Advanced Technology</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>16+ Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img id="hero-img" src="assets/images/clinic.jpg" alt="Dental Clinic" onerror="this.src='https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800'">
+                        <div class="floating-card card-1">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <strong>5.0</strong>
+                                <span>Rating</span>
+                            </div>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>5000+</strong>
+                                <span>Patients</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-grid">
+                <div class="about-image">
+                    <div class="image-frame">
+                        <img id="doctor-img" src="assets/images/doctor.jpg" alt="Dr. Snehal Shah" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600'">
+                        <div class="experience-badge">
+                            <span class="years" id="exp-years">16</span>
+                            <span class="text">Years<br>Experience</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <span class="section-label">About Us</span>
+                    <h2 class="section-title" id="doctor-name">Dr. Snehal Shah</h2>
+                    <p class="about-text" id="about-text">
+                        With over 16 years of clinical experience, Dr. Snehal Shah combines extensive 
+                        expertise with genuine compassion to deliver exceptional dental care. Our clinic 
+                        at Anand Health Care, Goregaon West provides comprehensive dental solutions.
+                    </p>
+
+                    <div class="about-highlights">
+                        <div class="highlight-box">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>Expert Care</h4>
+                            <p>Advanced dental procedures</p>
+                        </div>
+                        <div class="highlight-box">
+                            <i class="fas fa-heart"></i>
+                            <h4>Gentle Touch</h4>
+                            <p>Painless treatments</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links" id="social-links">
+                        <a href="https://wa.me/919403515585" class="social-btn whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-btn facebook" id="social-facebook" style="display: none;" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-btn instagram" id="social-instagram" style="display: none;" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-btn linkedin" id="social-linkedin" style="display: none;" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-btn justdial" id="social-justdial" style="display: none;" target="_blank">
+                            <i class="fas fa-star"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Services</span>
+                <h2 class="section-title">Comprehensive Dental Care</h2>
+                <p>From routine checkups to advanced procedures</p>
+            </div>
+
+            <div class="services-grid" id="services-container">
+                <!-- Services loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Patients Say</h2>
+            </div>
+
+            <div class="reviews-grid" id="reviews-container">
+                <!-- Reviews loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment" class="appointment">
+        <div class="container">
+            <div class="appointment-wrapper">
+                <div class="appointment-info">
+                    <h2>Book Your Appointment</h2>
+                    <p>Fill the form and we'll confirm your appointment shortly via WhatsApp or call.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="method">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <span>Call Us</span>
+                                <strong id="contact-phone">+91 94035 15585</strong>
+                            </div>
+                        </div>
+                        <div class="method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span>Visit Us</span>
+                                <strong id="contact-address">Anand Health Care, Goregaon (W)</strong>
+                            </div>
+                        </div>
+                        <div class="method">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <span>Timing</span>
+                                <strong id="contact-timing">Mon-Sat: 10 AM - 1 PM</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="appointment-form-wrapper">
+                    <form id="appointment-form" class="appointment-form">
+                        <div class="form-group">
+                            <label for="patient-name">Full Name *</label>
+                            <input type="text" id="patient-name" name="name" required placeholder="Enter your name">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="patient-phone">Phone Number *</label>
+                                <input type="tel" id="patient-phone" name="phone" required placeholder="+91 98765 43210" pattern="[0-9+\s-]+">
+                            </div>
+                            <div class="form-group">
+                                <label for="patient-email">Email (Optional)</label>
+                                <input type="email" id="patient-email" name="email" placeholder="your@email.com">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="appointment-date">Preferred Date *</label>
+                                <input type="date" id="appointment-date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="appointment-time">Preferred Time</label>
+                                <select id="appointment-time" name="time">
+                                    <option value="">Select Time</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="10:30 AM">10:30 AM</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <option value="11:30 AM">11:30 AM</option>
+                                    <option value="12:00 PM">12:00 PM</option>
+                                    <option value="12:30 PM">12:30 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service-type">Service Required *</label>
+                            <select id="service-type" name="service" required>
+                                <option value="">Select Service</option>
+                                <option value="General Checkup">General Checkup</option>
+                                <option value="Dental Implants">Dental Implants</option>
+                                <option value="Root Canal">Root Canal Treatment</option>
+                                <option value="Teeth Whitening">Teeth Whitening</option>
+                                <option value="Braces/Aligners">Braces & Aligners</option>
+                                <option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="patient-message">Message (Optional)</label>
+                            <textarea id="patient-message" name="message" rows="3" placeholder="Describe your dental concern..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-calendar-check"></i>
+                            Request Appointment
+                        </button>
+                    </form>
+
+                    <!-- Success Message -->
+                    <div id="form-success" class="form-success" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Appointment Requested!</h3>
+                        <p>We'll contact you shortly to confirm.</p>
+                        <button onclick="resetForm()" class="btn btn-secondary">Book Another</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Inquiry Modal -->
+    <div id="inquiry-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeInquiry()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3>Quick Inquiry</h3>
+            <form id="quick-inquiry-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="service" required>
+                    <option value="">Select Service</option>
+                    <option value="Implants">Dental Implants</option>
+                    <option value="RCT">Root Canal</option>
+                    <option value="Braces">Braces</option>
+                    <option value="Whitening">Teeth Whitening</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Send Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-tooth"></i>
+                        <div>
+                            <h3 id="footer-name">Dr. Snehal Shah</h3>
+                            <span>Dental Clinic</span>
+                        </div>
+                    </div>
+                    <p id="footer-desc">Providing exceptional dental care with 16+ years of experience.</p>
+                    <div class="footer-social" id="footer-social">
+                        <!-- Social links loaded dynamically -->
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Dental Implants</a></li>
+                        <li><a href="#services">Root Canal</a></li>
+                        <li><a href="#services">Cosmetic Dentistry</a></li>
+                        <li><a href="#services">Teeth Whitening</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="footer-address">Anand Health Care, Shop No. 5, Near Zaveri Gas Co., Siddharth Nagar, Road No. 1, Goregaon (W), Mumbai</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+919403515585" id="footer-phone">+91 94035 15585</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@drsnehalshah.com" id="footer-email">info@drsnehalshah.com</a>
+                        </li>
+                
